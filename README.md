@@ -7,7 +7,7 @@ Unimask provides unified input masking and display formatting for Rails applicat
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "unimask", path: "lib/unimask"
+gem "unimask", git: "https://github.com/adicione/unimask"
 ```
 
 And run...
@@ -16,7 +16,7 @@ And run...
 bundle install
 ```
 
-> **Note:** Stimulus must be configured to scan `app/javascript/controllers/` for controllers. This is the default when running `bin/rails stimulus:install` in a Rails app.
+> **Note:** Unimask requires Stimulus to be installed and configured to scan `app/javascript/controllers/` for controllers. This is automatically set up when running `bin/rails stimulus:install` in a Rails app.
 
 ## Usage.
 
@@ -26,41 +26,29 @@ To use Unimask, simply attach it to your form container or any display element:
 
 ```html
 <form data-controller="masking">
-  <input type="text" class="mask-cpf">
+  <input data-mask="cpf">
 </form>
 ```
 
 **Display-only elements:**
 
 ```html
-<span data-controller="masking" class="mask-cpf">30117647861</span>
+<span data-controller="masking" data-mask="cpf">30117647861</span>
 ```
 
 ## Available Masks
 
-You can apply any of the following masks by adding the corresponding CSS class to your input field,  
-or by using `data-mask="..."` for display elements.
+You can apply any of the following masks by adding the corresponding `data-mask="..."` to any input or display element.
 
 | Mask key            | Description |
 |---------------------|-------------|
-| `mask-only-letters` | Allows only letters (A–Z, a–z). Removes numbers, punctuation, and special characters. |
-| `mask-name`         | Formats a name: capitalizes first letters and removes invalid characters. |
-| `mask-date`         | Formats as a date in `DD/MM/YYYY` format. |
-| `mask-br-phone`     | Formats Brazilian phone numbers (mobile and landline), e.g. `(11) 98888-7777`. |
-| `mask-cpf`          | Formats Brazilian CPF numbers, e.g. `123.456.789-01`. |
-| `mask-cnpj`         | Formats Brazilian CNPJ numbers, e.g. `12.345.678/0001-99`. |
-| `mask-brl`          | Formats as Brazilian Real currency, e.g. `R$ 1.234,56`. |
-| `mask-usd`          | Formats as US Dollar currency, e.g. `$1,234.56`. |
-| `mask-cep`          | Formats Brazilian postal codes (CEP), e.g. `12345-678`. |
-| `mask-br-plate`     | Formats Brazilian vehicle license plates, e.g. `ABC-1234`. |
-
-**Example usage in a form:**
-```html
-<input type="text" class="mask-cpf">
-<input type="text" class="mask-br-phone">
-```
-
-**Example usage in display mode:**
-```html
-<span data-controller="masking" class="mask-cpf">30117647861</span>
-```
+| `only-letters` | Only letters (A–Z, a–z). |
+| `name`         | Proper person name. |
+| `date`         | Date in `DD/MM/YYYY` format. |
+| `br-phone`     | Brazilian phone numbers, e.g. `(11) 98888-7777` or `(11) 5888-7777`. |
+| `cpf`          | CPF numbers, e.g. `123.456.789-01`. |
+| `cnpj`         | CNPJ numbers, e.g. `12.345.678/0001-99`. |
+| `brl`          | Brazilian Real currency, e.g. `R$ 1.234,56`. |
+| `usd`          | US Dollar currency, e.g. `$1,234.56`. |
+| `cep`          | Brazilian postal codes (CEP), e.g. `12345-678`. |
+| `br-plate`     | Brazilian vehicle license plates, e.g. `ABC-1234`. |

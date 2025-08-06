@@ -5,7 +5,7 @@ Gem::Specification.new do |spec|
   spec.version     = Unimask::VERSION
   spec.authors     = [ "Ayres Narita" ]
   spec.email       = [ "eu@ayresnarita.com" ]
-  spec.homepage    = "TODO"
+  spec.homepage    = "https://github.com/adicione/unimask"
   spec.summary     = "Unified input masking and display formatting for Rails."
   spec.description = "Unimask provides unified input masking and display formatting for Rails applications, with Stimulus-powered frontend masks."
 

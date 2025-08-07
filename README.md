@@ -16,8 +16,6 @@ And run...
 bundle install
 ```
 
-> **Note:** Unimask requires Stimulus to be installed and configured to scan `app/javascript/controllers/` for controllers.
-
 ## Usage
 
 To use Unimask, simply attach it to your form container or any display element:
@@ -32,23 +30,20 @@ To use Unimask, simply attach it to your form container or any display element:
 
 **Display-only elements:**
 
-```html
-<span data-controller="masking" data-mask="cpf">30117647862</span>
+```ruby
+"ayres narita".mask :name
 ```
 
-```html
-<span data-controller="masking">
-  <span data-mask="cpf">30117647862</span>
-  <span data-mask="br-phone">11982811112</span>
-</span>
+```ruby
+@user.contacts.first.content.mask :phone
 ```
 
 ## Available Masks
 
 You can apply any of the following masks by adding the corresponding `data-mask="..."` to any input or display element.
 
-| Mask key            | Description |
-|---------------------|-------------|
+| Mask           | Description |
+|----------------|-------------|
 | `only-letters` | Only letters (A–Z, a–z). |
 | `name`         | Proper person name. |
 | `date`         | Date in `DD/MM/YYYY` format. |

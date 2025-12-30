@@ -35,8 +35,10 @@ To use Unimask, simply attach it to your form container or any display element:
 ```
 
 ```ruby
-@user.contacts.first.content.mask :phone
+@user.contacts.first.content.mask :br_phone
 ```
+
+> **Note:** In Ruby, mask names like `"br-phone"` must be written using underscores and symbols, like `:br_phone`.
 
 ## Available Masks
 
@@ -44,11 +46,15 @@ You can apply any of the following masks by adding the corresponding `data-mask=
 
 | Mask           | Description |
 |----------------|-------------|
-| `only-letters` | Only letters (A–Z, a–z). |
-| `name`         | Proper person name. |
 | `date`         | Date in `DD/MM/YYYY` format. |
 | `br-phone`     | Brazilian phones numbers. `(11) 98888-7777` or `(11) 5888-7777`. |
 | `cpf`          | CPF numbers. `123.456.789-01`. |
+
+## TODO
+
+| Mask           | Description |
+|----------------|-------------|
+| `letters`      | Only letters (A–Z, a–z). |
 | `cnpj`         | CNPJ numbers. `12.345.678/0001-99`. |
 | `brl`          | Brazilian Real currency. `R$ 1.234,56`. |
 | `usd`          | US Dollar currency. `$1,234.56`. |

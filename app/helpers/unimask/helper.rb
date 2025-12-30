@@ -10,8 +10,6 @@ module Unimask
       case mask_type.to_sym
       when :name
         name(value)
-      when :phone
-        phone(value)
       when :cpf
         cpf(value)
       else
@@ -35,6 +33,10 @@ module Unimask
           word
         end
       end.join(" ")
+    end
+
+    def cpf(cpf)
+      cpf&.gsub(/(\d{3})(\d{3})(\d{3})(\d{2})/, "\\1.\\2.\\3-\\4")
     end
   end
 end

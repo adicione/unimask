@@ -21,7 +21,6 @@ export default class extends Controller {
   setup() {
     this.masks = {
       "only-letters": this.maskOnlyLetters,
-      "name": this.maskName,
       "date": this.maskDate,
       "br-phone": this.maskBrPhone,
       "cpf": this.maskCpf,
@@ -116,23 +115,6 @@ export default class extends Controller {
     return { result, maskPositions }
   }
   
-  maskName(name) {
-    name = name
-      .replace(/[^a-zA-ZÀ-ÿ\s'.-]/g, '') // Keeps only letters, spaces, apostrophes, hyphens and dots.
-      .replace(/^\s+/, '') // Leading spaces.
-      .replace(/[\s]{2,}/g, ' ') // Multiple spaces.
-      .replace(/[-]{2,}/g, '-') // Multiple hyphens.
-      .replace(/[.]{2,}/g, '.') // Multiple dots.
-      .replace(/[']{2,}/g, "'") // Multiple apostrophes.
-
-    const result = name.slice(0, 50) // Limit to 50 characters.
-    const maskPositions = []
-
-    console.log("Masking name:", result)
-
-    return { result, maskPositions }
-  }
-
   // Not tested masks.
 
   maskOnlyLetters(string) {

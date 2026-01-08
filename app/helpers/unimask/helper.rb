@@ -17,7 +17,7 @@ module Unimask
       end
     end
 
-    private
+  private
 
     def name(name)
       roman_numeral_regex = /\A(?=[MDCLXVI])M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})\z/i
@@ -25,10 +25,12 @@ module Unimask
       name.split.map do |word|
         if word.match?(roman_numeral_regex)
           word.upcase
-        elsif word.include?("'")
-          word.split("'").map.with_index { |part, i| (i == 0 && part.length < 3) ? part : part.capitalize }.join("'") # Capitalize parts of words with apostrophes, except the first part if it's short.
-        elsif word.length >= 3
-          word.capitalize # Capitalize words with 3 or more characters.
+        elsif word.include?("'") # Capitalize parts of words with apostrophes, except the first part if it's short.
+          # TODO : Tratar nomes como D'Costa que hoje estão deixando a letra D antes da ' minuscula
+          # o problema se repete para menos de 3 letras antes do '.
+          word.split("'").map.with_index { |part, i| (i == 0 && part.length < 3) ? part : part.capitalize }.join("'")
+        elsif word.length >= 3 # Capitalize words with 3 or more characters.
+          word.capitalize
         else
           word
         end

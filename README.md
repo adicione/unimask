@@ -28,6 +28,10 @@ To use Unimask, simply attach it to your form container or any display element:
 </form>
 ```
 
+```ruby
+f.text_field :number, data: { mask: "only-numbers" }
+```
+
 **Display-only elements:**
 
 ```ruby
@@ -49,6 +53,8 @@ You can apply any of the following masks by adding the corresponding `data-mask=
 | `date`         | Date in `DD/MM/YYYY` format. |
 | `br-phone`     | Brazilian phones numbers. `(11) 98888-7777` or `(11) 5888-7777`. |
 | `cpf`          | CPF numbers. `123.456.789-01`. |
+| `only-numbers` | Number fields. `12345`. |
+| `cep`          | Brazilian postal codes (CEP). `12345-678`. |
 
 ## TODO
 
@@ -58,5 +64,4 @@ You can apply any of the following masks by adding the corresponding `data-mask=
 | `cnpj`         | CNPJ numbers. `12.345.678/0001-99`. |
 | `brl`          | Brazilian Real currency. `R$ 1.234,56`. |
 | `usd`          | US Dollar currency. `$1,234.56`. |
-| `cep`          | Brazilian postal codes (CEP). `12345-678`. |
 | `br-plate`     | Brazilian vehicle license plates. `ABC-1234`. |

@@ -21,6 +21,7 @@ export default class extends Controller {
   setup() {
     this.masks = {
       "only-letters": this.maskOnlyLetters,
+      "only-numbers": this.maskOnlyNumbers,
       "date": this.maskDate,
       "br-phone": this.maskBrPhone,
       "cpf": this.maskCpf,
@@ -114,7 +115,22 @@ export default class extends Controller {
 
     return { result, maskPositions }
   }
-  
+
+  maskOnlyNumbers(string) {
+    const result = string.replace(/[^0-9]/g, "")
+    const maskPositions = []
+
+    return { result, maskPositions }
+  }
+
+  maskCep(cep) {
+    let result = cep.replace(/\D/g, "").slice(0, 8)
+    result = result.replace(/^(\d{5})(\d{1,3})$/, "$1-$2")
+    const maskPositions = [ 4 ]
+
+    return { result, maskPositions }
+  }
+
   // Not tested masks.
 
   maskOnlyLetters(string) {
@@ -184,14 +200,6 @@ export default class extends Controller {
     return { result, maskPositions }
   }
   
-  maskCep(cep) {
-    let result = cep.replace(/\D/g, "").slice(0, 8)
-    result = result.replace(/^(\d{5})(\d{1,3})$/, "$1-$2")
-    const maskPositions = [ 4 ]
-
-    return { result, maskPositions }
-  }
-
   maskBrPlate(plate) {
     // Uppercase, removes non-alphanumeric and keeps under 7 characters.
     let result = plate.replace(/[^A-Z0-9]/gi, "").toUpperCase().slice(0, 7)

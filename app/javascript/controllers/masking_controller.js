@@ -126,7 +126,7 @@ export default class extends Controller {
   maskCep(cep) {
     let result = cep.replace(/\D/g, "").slice(0, 8)
     result = result.replace(/^(\d{5})(\d{1,3})$/, "$1-$2")
-    const maskPositions = [ 4 ]
+    const maskPositions = [ 6 ]
 
     return { result, maskPositions }
   }

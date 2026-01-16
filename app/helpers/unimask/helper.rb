@@ -29,7 +29,7 @@ module Unimask
           # TODO : Tratar nomes como D'Costa que hoje estão deixando a letra D antes da ' minuscula
           # o problema se repete para menos de 3 letras antes do '.
           word.split("'").map.with_index { |part, i| (i == 0 && part.length < 3) ? part : part.capitalize }.join("'")
-        elsif word.length >= 3 # Capitalize words with 3 or more characters.
+        elsif word.length >= 3 || word.in?([ "av", "ap" ]) # Capitalize words with 3 or more characters or Av (avenida) Ap (apartamento).
           word.capitalize
         else
           word

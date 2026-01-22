@@ -12,12 +12,14 @@ module Unimask
         name(value)
       when :cpf
         cpf(value)
+      when :br_phone
+        br_phone(value)
       else
         value
       end
     end
 
-  private
+    private
 
     def name(name)
       roman_numeral_regex = /\A(?=[MDCLXVI])M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})\z/i
@@ -39,6 +41,23 @@ module Unimask
 
     def cpf(cpf)
       cpf&.gsub(/(\d{3})(\d{3})(\d{3})(\d{2})/, "\\1.\\2.\\3-\\4")
+    end
+
+    def br_phone(phone)
+      digits = phone.to_s.gsub(/\D/, "")
+
+      return nil if digits.empty?
+
+      digits = digits.sub(/\A55/, "") if digits.length >= 12 # Removes DDI 55
+
+      case digits.length
+      when 10
+        digits.gsub(/(\d{2})(\d{4})(\d{4})/, "(\\1) \\2-\\3") # Landline: AA + NNNN + NNNN
+      when 11
+        digits.gsub(/(\d{2})(\d{5})(\d{4})/, "(\\1) \\2-\\3") # Mobile: AA + NNNNN + NNNN
+      else
+        phone # Fallback: do not format if no match
+      end
     end
   end
 end

@@ -63,7 +63,6 @@ export default class extends Controller {
 
     let position = target.selectionEnd
 
-    target.mask = this.masks[target.dataset.mask].call(this, target.value)
     target.value = target.mask.result
 
     if (document.activeElement !== target) return // Adjusts position based on inputType and maskPosition if focused.

@@ -1,5 +1,7 @@
 module Unimask
   module Helper
+    # Set as String method in
+    # app/core/string.
     def mask(**args)
       return if args.empty?
 
@@ -17,6 +19,12 @@ module Unimask
       else
         value
       end
+    end
+
+    def validation_feedback(object)
+      return if object.blank?
+
+      render Unimask::ValidationFeedbackComponent.new(object)
     end
 
     private

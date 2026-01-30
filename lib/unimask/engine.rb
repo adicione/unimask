@@ -1,7 +1,13 @@
 module Unimask
   class Engine < ::Rails::Engine
     initializer "unimask.core" do
-      require Engine.root.join("app/core/string.rb")
+      require Engine.root.join("app/core/string.rb") # Makes the mask method a string method.
+    end
+
+    initializer "unimask.view_helpers" do
+      ActiveSupport.on_load(:action_view) do
+        include Unimask::Helper
+      end
     end
 
     initializer "unimask.controllers" do |app|

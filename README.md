@@ -61,6 +61,13 @@ We also have a ruby validation feedback you can add to your form:
 render Application::ValidationFeedbackComponent.new @address
 ```
 
+Or simply:
+
+```ruby
+validation_feedback @address
+```
+
+
 **Display-only elements:**
 
 ```ruby

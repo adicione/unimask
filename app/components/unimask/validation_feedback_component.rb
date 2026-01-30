@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Application::ValidationFeedbackComponent < ViewComponent::Base
+class Unimask::ValidationFeedbackComponent < ViewComponent::Base
   def initialize(record)
     @record = record
   end

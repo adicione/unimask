@@ -96,7 +96,7 @@ You can apply any of the following masks by adding the corresponding `data-mask=
 
 You can apply any of the following masks by adding the corresponding `data-validate="..."` to any input element.
 
-| Mask           | Description |
+| Validation     | Description |
 |----------------|-------------|
 | `date`         | Date in `DD/MM/YYYY` format. |
 | `br-phone`     | Brazilian phones numbers. `(11) 98888-7777` or `(11) 5888-7777`. |

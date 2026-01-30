@@ -34,7 +34,7 @@ f.text_field :number, data: { mask: "cpf", validate: "cpf" }
 
 **Ruby validation:**
 
-The Validator class will be available with the following methods:
+The `Validator` class will be available with the following methods:
 
 - name (Letters, apostrophes, hyphens, dots and 2-50 chars.)
 - date_of_birth (Real date and age from 10 to 100.)
@@ -45,6 +45,8 @@ The Validator class will be available with the following methods:
 ```ruby
 Validate.name(string)
 ```
+
+> **Note:** Those methods will always return `true` or `false` based on the string passed.
 
 In the model:
 
